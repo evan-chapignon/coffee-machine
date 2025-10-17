@@ -1,3 +1,6 @@
+#+AUTHOR: Evan DELEPINE
+#+DATE: <2025-10-17 Fri>
+
 * COFFEE-MACHINE : Le travail efficace pour les nuls
 
 Chez nos amis développeurs, on entend souvent dire "Emacs est trop

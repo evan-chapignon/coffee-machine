@@ -1,0 +1,27 @@
+#+AUTHOR: Evan DELEPINE
+#+DATE: <2025-10-17 Fri>
+
+* Emacs pour les nuls
+
+Vous avez lu le README, allons droit au but :)
+
+** Les modes
+
+Ici, on garde les menus supérieurs, le but étant de regarder quel
+raccourci est associé à quelle action. On pourra retirer les modes à
+l'avenir en remplaçant "1" par "-1"
+
+#+begin_src elisp
+  (menu-bar-mode 1)
+  (tool-bar-mode 1)
+#+end_src
+
+Je trouve judicieux d'activer le CUA (Common User Access), c'est à
+dire les raccourcis d'édition classiques (C-x, C-c, C-v, C-z), qui
+sont communs à beaucoup de logiciels de traitement de texte (Word,
+Visual Studio Code, Intellij et j'en passe).
+
+#+begin_src elisp
+  (cua-mode 1)
+#+end_src
+
