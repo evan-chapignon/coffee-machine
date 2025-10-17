@@ -1,0 +1,35 @@
+* COFFEE-MACHINE : Le travail efficace pour les nuls
+
+Chez nos amis développeurs, on entend souvent dire "Emacs est trop
+compliqué, le jeu n'en vaut pas la chandelle"
+
+Seulement, nous sommes persuadés que c'est faux, ou en partie.
+
+En effet, Emacs n'est pas forcément compliqué, et peut s'avérer très
+robuste et efficace, surtout quand on sait comment s'y prendre
+
+C'est ici que nous intervenons, grâce à cette configuration emacs et
+i3 faite avec *amour*, nous projetons de rendre le travail efficace
+simple à mettre en place, ce qui peut paraître compliqué.
+
+** Comment l'installer ?
+
+Il suffit simplement de cloner le dépot.
+
+#+begin_src sh
+git clone https://github/evan-chapignon/coffee-machine/
+#+end_src
+
+Il ne vous reste plus qu'à installer les dépendances
+
+_Exemple avec *Debian*_
+
+#+begin_src sh
+sudo apt install emacs i3 polybar
+#+end_src
+
+** A qui s'addresse notre travail ?
+
+Ces configurations s'addressent principalement aux *étudiants en
+informatique*, et permet le *développement* ainsi que la *prise de note*
+dans le *confort*, et *sans souris*!
