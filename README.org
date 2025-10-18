@@ -15,20 +15,51 @@ C'est ici que nous intervenons, grâce à cette configuration emacs et
 i3 faite avec *amour*, nous projetons de rendre le travail efficace
 simple à mettre en place, ce qui peut paraître compliqué.
 
-** Comment l'installer ?
+* Installation du projet Coffee Machine
 
-Il suffit simplement de cloner le dépot.
+** 1. Cloner le dépôt
+Il suffit simplement de cloner le dépôt du projet.
 
 #+begin_src sh
-git clone https://github/evan-chapignon/coffee-machine/
+git clone https://github.com/evan-chapignon/coffee-machine/
 #+end_src
 
-Il ne vous reste plus qu'à installer les dépendances
+** 2. Installation des dépendances
+Les dépendances varient selon votre distribution Linux.
 
-_Exemple avec *Debian*_
+*** Debian / Ubuntu
+#+begin_src sh
+sudo apt update
+sudo apt install emacs i3 polybar
+#+end_src
+
+*** Arch Linux / Manjaro
+#+begin_src sh
+sudo pacman -Syu emacs i3 polybar
+#+end_src
+
+*** Fedora
+#+begin_src sh
+sudo dnf install emacs i3 polybar
+#+end_src
+
+** 3. Installation de la police Iosevka Nerd Font
+:PROPERTIES:
+:ID: install-iosevka-font
+:END:
+Cette police est utilisée dans le terminal et Polybar.
 
 #+begin_src sh
-sudo apt install emacs i3 polybar
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Iosevka.zip
+unzip Iosevka.zip -d ~/.local/share/fonts/
+fc-cache -fv
+#+end_src
+
+** 4. Vérification
+Vous pouvez vérifier que la police est bien installée :
+
+#+begin_src sh
+fc-list | grep "Iosevka"
 #+end_src
 
 ** A qui s'addresse notre travail ?
