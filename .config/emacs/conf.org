@@ -4,7 +4,8 @@
 
 * Emacs pour les nuls
 
-Vous avez lu le README, allons droit au but :)
+DISCLAIMER : Nous partons du principe que vous avez fait le [[elisp:(help-with-tutorial)][tutoriel
+d'emacs]] (C-h t (Ce qui signifie CTRL+H, puis t)) 
 
 ** Les modes
 
@@ -20,7 +21,7 @@ l'avenir en remplaçant "1" par "-1"
   (menu-bar-mode 1)
   (tool-bar-mode 1)
 #+end_src
-
+ 
 Je trouve judicieux d'activer le CUA (Common User Access), c'est à
 dire les raccourcis d'édition classiques (C-x, C-c, C-v, C-z), qui
 sont communs à beaucoup de logiciels de traitement de texte (Word,
@@ -28,5 +29,28 @@ Visual Studio Code, Intellij et j'en passe).
 
 #+begin_src elisp
   (cua-mode 1)
+#+end_src
+
+Dans un but d'esthétisme, la barre de défilement sera otée.
+
+#+begin_src elisp
+  (scroll-bar-mode -1)
+#+end_src
+
+Aussi, on veut voir le numéro des lignes (Toujours mieux pour déboguer
+du code ;))
+
+#+begin_src elisp
+  (global-display-line-numbers-mode 1)
+#+end_src
+
+** Les paquets à installer
+
+On initialise MELPA (une archive de paquets pour emacs)
+
+#+begin_src elisp
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
 #+end_src
 
