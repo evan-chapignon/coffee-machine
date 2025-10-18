@@ -2,7 +2,7 @@
 Tout bureau qui se respecte doit avoir une belle et utile barre d'état.
 
 * Introduction
-Ici vous retrouverez toute la configuration pour une barre simple et utile, mais aussi pour les plus créatifs d'entre vous des modules que vous pourrez décider d'utiliser ou non, plus ou moins utiles.
+Ici vous retrouverez toute la configuration pour une barre simple et utile, mais aussi pour les plus créatifs d'entre vous des modules que vous pourrez décider d'utiliser ou non.
 
 ** Les couleurs
 Dans la configuration ci-dessous, vous verrez souvent `=${colors.<couleur>}=`, ce qui permet d'adapter Polybar au thème que vous avez choisi.  
@@ -14,7 +14,7 @@ include-file = $HOME/.config/polybar/themes/<flavor>.ini
 #+end_src
 
 ** Les polices (fonts)
-Nous utilisons la police **Iosevka Nerd**, pensez donc à l'installer si ce n'est pas déjà fait.  
+La police utilisée est **Iosevka Nerd**, pensez donc à l'installer si ce n'est pas déjà fait.  
 Un guide d'installation est disponible : [[file:../../README.org::#install-iosevka-font][Installation de la police Iosevka Nerd Font]]
 
 * La barre en tant que telle
@@ -53,8 +53,9 @@ modules-right = filesystem pulseaudio xkeyboard network battery
 * Les Modules
 
 ** Xworkspaces
-Ce module, ainsi que le suivant, est selon moi le plus utile et pratique.  
-Il permet de savoir combien de workspaces sont utilisés ainsi que celui sur lequel vous vous trouvez.
+
+Ce module, ainsi que le suivant, sont les plus importants pour se repérer.
+Xworkspaces permet de savoir combien d'espaces de travail sont utilisés ainsi que celui sur lequel vous vous trouvez.
 
 #+begin_src ini
 [module/xworkspaces]
