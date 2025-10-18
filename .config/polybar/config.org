@@ -1,0 +1,80 @@
+* Polybar pour les nuls
+Tout bureau qui se respecte doit avoir une belle et utile barre d'état.
+
+* Introduction
+Ici vous retrouverez toute la configuration pour une barre simple et utile, mais aussi pour les plus créatifs d'entre vous des modules que vous pourrez décider d'utiliser ou non, plus ou moins utiles.
+
+** Les couleurs
+Dans la configuration ci-dessous, vous verrez souvent `=${colors.<couleur>}=`, ce qui permet d'adapter Polybar au thème que vous avez choisi.  
+Pour plus d'informations sur les couleurs utilisées par thème, consultez les fichiers se trouvant dans [[file:themes/][themes/]].
+
+Pour importer le thème :  
+#+begin_src ini
+include-file = $HOME/.config/polybar/themes/<flavor>.ini
+#+end_src
+
+** Les polices (fonts)
+Nous utilisons la police **Iosevka Nerd**, pensez donc à l'installer si ce n'est pas déjà fait.  
+Un guide d'installation est disponible [[file:../../README.org][ici]].
+
+* La barre en tant que telle
+#+begin_src ini
+[bar/Newbie]
+width = 100%
+height = 0
+background = ${colors.base}
+foreground = ${colors.text}
+line-size = 2
+border-size = 0
+padding-right = 4
+padding-left = 4
+padding-top = 3
+separator = .
+separator-foreground = ${colors.subtext0}
+font-0 = Iosevka Nerd Font:size=10;2
+font-1 = Iosevka Nerd Font:style=Bold:size=12;2
+cursor-click = pointer
+cursor-scroll = ns-resize
+enable-ipc = true
+#+end_src
+
+Pour disposer vos modules sur la Polybar et choisir ce que vous voulez afficher, vous avez 3 options possibles :  
+- À gauche  
+- Au centre  
+- À droite  
+
+Voici notre sélection recommandée :  
+#+begin_src ini
+modules-left = xworkspaces xwindow
+modules-center = date
+modules-right = filesystem pulseaudio xkeyboard network battery
+#+end_src
+
+* Les Modules
+
+** Xworkspaces
+Ce module, ainsi que le suivant, est selon moi le plus utile et pratique.  
+Il permet de savoir combien de workspaces sont utilisés ainsi que celui sur lequel vous vous trouvez.
+
+#+begin_src ini
+[module/xworkspaces]
+type = internal/xworkspaces
+label-active = %name%
+label-active-background = ${colors.surface2}
+label-active-underline = ${colors.lavender}
+label-active-padding = 1
+label-occupied = %name%
+label-occupied-padding = 2
+label-urgent = %name%
+label-urgent-background = ${colors.red}
+label-urgent-padding = 2
+label-empty = %name%
+label-empty-foreground = ${colors.subtext0}
+label-empty-padding = 2
+#+end_src
+
+* Ressources utiles
+- Documentation officielle Polybar : https://polybar.github.io  
+- Thèmes Catppuccin : https://github.com/catppuccin/polybar  
+- Polices Iosevka : https://github.com/be5invis/Iosevka  
+- Guide d'installation des polices Nerd et des dépendances : [[file:../../README.org][ici]]
