@@ -28,25 +28,30 @@ git clone https://github.com/evan-chapignon/coffee-machine/
 Les dépendances varient selon votre distribution Linux.
 
 *** Debian / Ubuntu
+
 #+begin_src sh
 sudo apt update
 sudo apt install emacs i3 polybar
 #+end_src
 
 *** Arch Linux / Manjaro
+
 #+begin_src sh
 sudo pacman -Syu emacs i3 polybar
 #+end_src
 
 *** Fedora
+
 #+begin_src sh
 sudo dnf install emacs i3 polybar
 #+end_src
 
-** 3. Installation de la police Iosevka Nerd Font
+** 3. Installation des la polices Iosevka Nerd Font
 :PROPERTIES:
-:ID: install-iosevka-font
+:ID: install-font
 :END:
+
+*** Iosevka Nerd Font
 Cette police est utilisée dans le terminal et Polybar.
 
 #+begin_src sh
@@ -54,6 +59,29 @@ wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Iosevka.zi
 unzip Iosevka.zip -d ~/.local/share/fonts/
 fc-cache -fv
 #+end_src
+
+*** Cantarell
+Cette font est utilisée dans la Polybar.
+
+**** Debian / Ubuntu
+
+#+begin_src sh
+sudo apt update
+sudo apt install fonts-cantarell
+#+end_src
+
+**** Arch Linux / Manjaro
+
+#+begin_src sh
+sudo pacman -S cantarell-fonts
+#+end_src
+
+**** Fedora
+
+#+begin_src sh
+sudo dnf install cantarell-fonts
+#+end_src
+
 
 ** 4. Vérification
 Vous pouvez vérifier que la police est bien installée :
