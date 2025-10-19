@@ -8,7 +8,7 @@ Tout bureau qui se respecte doit avoir une belle et utile barre d'état.
 Ici vous retrouverez toute la configuration pour une barre simple et utile, mais aussi pour les plus créatifs d'entre vous des modules que vous pourrez décider d'utiliser ou non, plus ou moins utiles.
 
 ** Les couleurs
-Dans la configuration ci-dessous, vous verrez souvent `=${colors.<couleur>}=`, ce qui permet d'adapter Polybar au thème que vous avez choisi.  
+Dans la configuration ci-dessous, vous verrez souvent =${colors.<couleur>}=, ce qui permet d'adapter Polybar au thème que vous avez choisi.  
 Pour plus d'informations sur les couleurs utilisées par thème, consultez les fichiers se trouvant dans [[file:themes/][themes/]].
 
 Pour importer le thème :  
@@ -17,7 +17,7 @@ include-file = $HOME/.config/polybar/themes/<flavor>.ini
 #+end_src
 
 ** Les polices (fonts)
-Nous utilisons la police *Iosevka Nerd* pour les icones et *Cantarell* pour les reste, pensez donc à les installer si ce n'est pas déjà fait.  
+Nous utilisons la police *Iosevka Nerd* pour les icones, pensez donc à les installer si ce n'est pas déjà fait.  
 Un guide d'installation est disponible : [[file:../../README.org::#install-iosevka-font][Installation de la polices]
 
 * La barre en tant que telle
