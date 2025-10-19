@@ -48,40 +48,17 @@ sudo dnf install emacs i3 polybar
 
 ** 3. Installation des la polices Iosevka Nerd Font
 :PROPERTIES:
-:ID: install-font
+:ID: install-iosevka-font
 :END:
 
 *** Iosevka Nerd Font
-Cette police est utilisée dans le terminal et Polybar.
+Cette police est utilisée dans Polybar.
 
 #+begin_src sh
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Iosevka.zip
 unzip Iosevka.zip -d ~/.local/share/fonts/
 fc-cache -fv
 #+end_src
-
-*** Cantarell
-Cette font est utilisée dans la Polybar.
-
-**** Debian / Ubuntu
-
-#+begin_src sh
-sudo apt update
-sudo apt install fonts-cantarell
-#+end_src
-
-**** Arch Linux / Manjaro
-
-#+begin_src sh
-sudo pacman -S cantarell-fonts
-#+end_src
-
-**** Fedora
-
-#+begin_src sh
-sudo dnf install cantarell-fonts
-#+end_src
-
 
 ** 4. Vérification
 Vous pouvez vérifier que la police est bien installée :
