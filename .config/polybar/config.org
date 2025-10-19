@@ -5,10 +5,10 @@
 Tout bureau qui se respecte doit avoir une belle et utile barre d'état.
 
 * Introduction
-Ici vous retrouverez toute la configuration pour une barre simple et utile, mais aussi pour les plus créatifs d'entre vous des modules que vous pourrez décider d'utiliser ou non, plus ou moins utiles.
+Ici vous retrouverez toute la configuration pour une barre simple et utile, mais aussi, pour les plus créatifs d'entre vous, des modules que vous pourrez décider d'utiliser ou non, plus ou moins utiles.
 
 ** Les couleurs
-Dans la configuration ci-dessous, vous verrez souvent =${colors.<couleur>}=, ce qui permet d'adapter Polybar au thème que vous avez choisi.  
+Dans la configuration ci-dessous, vous verrez souvent `=${colors.<couleur>}=`, ce qui permet d'adapter Polybar au thème que vous avez choisi.  
 Pour plus d'informations sur les couleurs utilisées par thème, consultez les fichiers se trouvant dans [[file:themes/][themes/]].
 
 Pour importer le thème :  
@@ -17,8 +17,8 @@ include-file = $HOME/.config/polybar/themes/<flavor>.ini
 #+end_src
 
 ** Les polices (fonts)
-Nous utilisons la police *Iosevka Nerd* pour les icones, pensez donc à les installer si ce n'est pas déjà fait.  
-Un guide d'installation est disponible : [[file:../../README.org::#install-iosevka-font][Installation de la polices]
+Nous utilisons la police *Iosevka Nerd* pour les icônes et *Cantarell* pour le reste. Pensez donc à les installer si ce n'est pas déjà fait.  
+Un guide d'installation est disponible : [[file:../../README.org::#install-iosevka-font][Installation des polices]]
 
 * La barre en tant que telle
 #+begin_src ini
@@ -78,40 +78,53 @@ label-empty-foreground = ${colors.subtext0}
 label-empty-padding = 2
 #+end_src
 
-** Windox
-Ce module vous indique dans quel fenetre vous vous trouvez, très pratique qaund vous comencer a avoir bo nnombre de fenetre ouverte sur votre bureau
+** Xwindow
+Ce module vous indique dans quelle fenêtre vous vous trouvez, très pratique quand vous commencez à avoir un bon nombre de fenêtres ouvertes sur votre bureau.
 
 #+begin_src ini
 [module/xwindow]
-  type = internal/xwindow
-  label = %title:0:60:...%
+type = internal/xwindow
+label = %title:0:60:...%
+label-foreground = ${colors.flamingo}
+#+end_src
+
+** Xkeyboard
+#+begin_src ini
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+label-layout = %layout%
+label-layout-foreground = ${colors.lavender}
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-foreground = ${colors.sky}
 #+end_src
 
 ** Date
-La classic date et heure, ai-je besoin d'en dire plus ?
+La classique date et heure.
 
 #+begin_src ini
 [module/date]
-  type = internal/date
-  date = %A, %d %B %Y %H:%M
-  label =%{T2} %date%%{T-}
+type = internal/date
+date = %A, %d %B %Y %H:%M
+label = %{T2} %date%%{T-}
 #+end_src
 
 ** Pulseaudio
-Petit module pour savoir si le son des hauparleur est activé
+Petit module pour savoir si le son des haut-parleurs est activé.
 
 #+begin_src ini
 [module/pulseaudio]
-  type = internal/pulseaudio
-  format-volume = <label-volume>
-  label-volume = %{T3}  %{T-} %percentage%%
-  label-muted = %{T3}  %{T-}
-  label-muted-foreground = ${colors.green}
-  label-volume-foreground = ${colors.green}
+type = internal/pulseaudio
+format-volume = <label-volume>
+label-volume = %{T3}  %{T-} %percentage%%
+label-muted = %{T3}  %{T-}
+label-muted-foreground = ${colors.green}
+label-volume-foreground = ${colors.green}
 #+end_src
 
 ** Network
-Module pour le résaux, éssentiel pour les newbie qui ne savent pas forcement si il sont connecté a l'internet.
+Module pour le réseau, essentiel pour les débutants qui ne savent pas forcément s'ils sont connectés à Internet.
 
 #+begin_src ini
 [module/network]
@@ -126,7 +139,7 @@ label-disconnected-foreground = ${colors.peach}
 #+end_src
 
 ** Battery
-Ici je me suis surpassé pour vous... il y a une animation de charge.
+Module avec animation de charge.
 
 #+begin_src ini
 [module/battery]
@@ -164,6 +177,51 @@ animation-charging-9 = 󰂂
 animation-charging-10 = 󰂂
 animation-charging-11 = 󰁹
 animation-charging-framerate = 500
+#+end_src
+
+* Modules pour les créatifs
+
+** Weather
+Module météo.
+
+#+begin_src ini
+[module/weather]
+type = custom/script
+exec = curl -s "https://wttr.in/?m&lang=fr&format=%C+%t+%w" 
+interval = 600
+#+end_src
+
+** Music
+Affiche les informations de la musique en cours sur Spotify.
+
+#+begin_src ini
+[module/music]
+type = custom/script
+exec = "playerctl metadata --format '🎵 {{artist}} - {{title}}'"
+label-foreground = ${colors.mauve}
+#+end_src
+
+** Temp
+Pour surveiller la température du PC et des composants.
+
+#+begin_src ini
+[module/temp]
+type = custom/script
+exec = "sensors | grep 'Package id 0:' | awk '{print $4}'"
+label = 🌡 %output%
+label-foreground = ${colors.blue}
+#+end_src
+
+** Git
+Module qui montre l’état du repo courant (branche, changements).
+
+#+begin_src ini
+[module/git]
+type = custom/script
+exec = "git -C /path/to/repo status -s | wc -l"
+interval = 10
+label = 🌿 %output% changes
+label-foreground = ${colors.green}
 #+end_src
 
 * Ressources utiles
