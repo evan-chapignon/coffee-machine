@@ -49,8 +49,49 @@ du code ;))
 On initialise MELPA (une archive de paquets pour emacs)
 
 #+begin_src elisp
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
+  (require 'package)
+  (add-to-list 'package-archives
+  		   '("melpa" . "https://melpa.org/packages/") t)
+  (package-initialize)
+  (unless package-archive-contents
+    (package-refresh-contents))
+
+  (unless (package-installed-p 'use-package)
+    (package-install 'use-package))
+  
+  (require 'use-package)
+  (setq use-package-always-ensure t)
 #+end_src
 
+*** MAGIT
+
+Gestionnaire git pour emacs
+
+Cheat sheet :
+- C-x g : ouvrir magit
+- s : add le fichier
+- c c : écrire le message de commit
+- C-c C-c : commit
+- F p : pull
+- P p : push
+
+#+begin_src elisp
+  (use-package magit
+  :ensure t
+  :bind (("C-x g" . magit-status)))
+#+end_src
+
+*** Vertico
+
+VERTical Interactive COmpletion
+
+Tout est dans le nom
+
+#+begin_src elisp
+  (use-package vertico
+  :init
+  (vertico-mode))
+#+end_src
+
+
+  
