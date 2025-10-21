@@ -89,6 +89,8 @@ label-foreground = ${colors.flamingo}
 #+end_src
 
 ** Xkeyboard
+Si vous changez de langue de clavier, ce petit module vous sera très pratique pour connaître votre disposition de touches actuelle.
+
 #+begin_src ini
 [module/xkeyboard]
 type = internal/xkeyboard
