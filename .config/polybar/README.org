@@ -17,8 +17,8 @@ include-file = $HOME/.config/polybar/themes/<flavor>.ini
 #+end_src
 
 ** Les polices (fonts)
-Nous utilisons la police *Iosevka Nerd* pour les icônes et *Cantarell* pour le reste. Pensez donc à les installer si ce n'est pas déjà fait.  
-Un guide d'installation est disponible : [[file:../../README.org::#install-iosevka-font][Installation des polices]]
+Nous utilisons la police *Iosevka Nerd* pour les icônes. Pensez donc à l'installer si ce n'est pas déjà fait.  
+Un guide d'installation est disponible : [[file:../../README.org::#install-iosevka-font][Installation de Iosevka]]
 
 * La barre en tant que telle
 #+begin_src ini
