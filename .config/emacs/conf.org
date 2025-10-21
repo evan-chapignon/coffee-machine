@@ -93,5 +93,31 @@ Tout est dans le nom
   (vertico-mode))
 #+end_src
 
+*** Modeline
 
-  
+Code repompé chez https://github.com/evan-chapignon/emacs
+
+#+begin_src elisp
+      (use-package mood-line)
+
+      (mood-line-mode 1)
+
+      (display-battery-mode 1)
+      (display-time-mode 1)
+      (setq display-time-format "%H:%M"
+  		  display-time-default-load-average nil)
+
+       (setq battery-mode-line-format " [BAT%p%%]")
+#+end_src
+ 
+*** Thème
+
+Thème catppuccin, simple, pastel, beau et répandu.
+
+#+begin_src elisp
+  (use-package catppuccin-theme)
+
+  (load-theme 'catppuccin :no-confirm)
+  (setq catppuccin-flavor 'latte) ;; Remplacer latte par mocha pour le thème sombre
+  (catppuccin-reload)
+#+end_src
