@@ -31,19 +31,19 @@ Les dépendances varient selon votre distribution Linux.
 
 #+begin_src sh
 sudo apt update
-sudo apt install emacs i3 polybar
+sudo apt install emacs i3 polybar rofi
 #+end_src
 
 *** Arch Linux / Manjaro
 
 #+begin_src sh
-sudo pacman -Syu emacs i3 polybar
+sudo pacman -Syu emacs i3 polybar rofi
 #+end_src
 
 *** Fedora
 
 #+begin_src sh
-sudo dnf install emacs i3 polybar
+sudo dnf install emacs i3 polybar rofi
 #+end_src
 
 ** 3. Installation des la polices Iosevka Nerd Font
