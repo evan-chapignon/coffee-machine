@@ -44,6 +44,15 @@ du code ;))
   (global-display-line-numbers-mode 1)
 #+end_src
 
+*** Les parentèses
+
+Parce que c'est mieux quand l'éditeur le fait pour nous
+
+#+begin_src elisp
+  (show-paren-mode 1)
+  (electric-pair-mode 1)
+#+end_src
+
 ** Les paquets à installer
 
 On initialise MELPA (une archive de paquets pour emacs)
@@ -121,3 +130,4 @@ Thème catppuccin, simple, pastel, beau et répandu.
   (setq catppuccin-flavor 'latte) ;; Remplacer latte par mocha pour le thème sombre
   (catppuccin-reload)
 #+end_src
+ 
