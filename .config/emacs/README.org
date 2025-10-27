@@ -191,6 +191,19 @@ Description des commandes M-x, indispensable
 #+end_src
 
 
+*** Consult
+
+Recherche et commandes améliorées
+
+#+begin_src elisp
+  (use-package consult)
+  (global-set-key (kbd "C-s") 'consult-line)  
+  (global-set-key (kbd "C-x b") 'consult-buffer)
+  (global-set-key (kbd "M-y") 'consult-yank-pop)
+  (global-set-key (kbd "C-c m") 'consult-imenu) 
+#+end_src
+
+
 ** QOL
 
 Gérer les fichiers de backups :
@@ -206,3 +219,7 @@ Simplifier la confirmation (yes/no)
 (fset 'yes-or-no-p 'y-or-n-p)
 #+end_src
 
+** Java
+
+Cette section a été séparée vers le fichier [[./java.org]], décommentez la
+ligne correspondate dans le [[init.el]] pour activer les fonctionnalités java.

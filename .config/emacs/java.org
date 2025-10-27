@@ -1,0 +1,44 @@
+#+AUTHOR: Evan DELEPINE
+#+DATE: <2025-10-27 Mon>
+#+property: header-args :results none
+
+* Java
+
+Un bloc de code pour l'utilisation de java dans emacs, pour être
+honnête, je recommande toujours l'utilisation d'intelliJ pour du java poussé
+
+#+begin_src elisp
+   (use-package lsp-mode
+    :init
+    (setq lsp-keymap-prefix "C-c l") ;; Préfixe pour les commandes LSP
+    :hook ((java-mode . lsp))
+    :commands (lsp lsp-deferred))
+
+  (use-package lsp-java
+    :after lsp
+    :config
+    (add-hook 'java-mode-hook #'lsp))
+
+  (use-package corfu
+    :init
+    (global-corfu-mode))
+
+  (use-package flycheck
+    :init (global-flycheck-mode))
+
+  (use-package dap-mode
+    :after lsp-mode
+    :config
+    (dap-auto-configure-mode)
+    (require 'dap-java))
+
+  (use-package projectile
+    :init (projectile-mode +1)
+    :bind-keymap
+    ("C-c p" . projectile-command-map))
+
+  
+  (use-package treemacs
+    :bind ("C-x t t" . treemacs))
+
+#+end_src
