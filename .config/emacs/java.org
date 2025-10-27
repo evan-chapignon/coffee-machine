@@ -8,12 +8,6 @@ Un bloc de code pour l'utilisation de java dans emacs, pour être
 honnête, je recommande toujours l'utilisation d'intelliJ pour du java poussé
 
 #+begin_src elisp
-   (use-package lsp-mode
-    :init
-    (setq lsp-keymap-prefix "C-c l") ;; Préfixe pour les commandes LSP
-    :hook ((java-mode . lsp))
-    :commands (lsp lsp-deferred))
-
   (use-package lsp-java
     :after lsp
     :config
