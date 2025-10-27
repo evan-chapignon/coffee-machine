@@ -44,6 +44,19 @@ du code ;))
   (global-display-line-numbers-mode 1)
 #+end_src
 
+Voir ce qu'on séléctionne avec C-Space
+
+#+begin_src elisp
+(transient-mark-mode 1)
+#+end_src
+
+Mettre en surbrillance la ligne actuelle :
+
+#+begin_src elisp
+(global-hl-line-mode 1)
+#+end_src
+
+
 *** Les parentèses
 
 Parce que c'est mieux quand l'éditeur le fait pour nous
@@ -72,6 +85,7 @@ On initialise MELPA (une archive de paquets pour emacs)
   (setq use-package-always-ensure t)
 #+end_src
 
+
 *** MAGIT
 
 Gestionnaire git pour emacs
@@ -90,6 +104,7 @@ Cheat sheet :
   :bind (("C-x g" . magit-status)))
 #+end_src
 
+
 *** Vertico
 
 VERTical Interactive COmpletion
@@ -102,9 +117,11 @@ Tout est dans le nom
   (vertico-mode))
 #+end_src
 
+
 *** Modeline
 
-Code repompé chez https://github.com/evan-chapignon/emacs
+Code repompé chez https://github.com/evan-chapignon/emacs (Pensez à
+mettre une petite star sur mes projets ;))
 
 #+begin_src elisp
       (use-package mood-line)
@@ -118,7 +135,8 @@ Code repompé chez https://github.com/evan-chapignon/emacs
 
        (setq battery-mode-line-format " [BAT%p%%]")
 #+end_src
- 
+
+
 *** Thème
 
 Thème catppuccin, simple, pastel, beau et répandu.
@@ -130,4 +148,61 @@ Thème catppuccin, simple, pastel, beau et répandu.
   (setq catppuccin-flavor 'latte) ;; Remplacer latte par mocha pour le thème sombre
   (catppuccin-reload)
 #+end_src
- 
+
+
+*** Avy
+
+Très puissant, permet d'entrer un caractère avec C-', puis, taper un
+autre caractère correspondant pour s'y rendre, le meilleur moyen de
+comprendre son effet est d'essayer
+
+#+begin_src elisp
+(use-package avy
+  :bind ("C-'" . avy-goto-char))
+#+end_src
+
+Faites C-', puis essayez de vous rendre sur chacun des caractères
+ci-dessous :
+
+QSDF JKLM
+
+
+*** Which key
+
+Vous affiche les options possibles après un raccourci
+
+#+begin_src elisp
+(use-package which-key
+  :init (which-key-mode)
+  :config (setq which-key-idle-delay 0.3))
+#+end_src
+
+Essayez de faire C-x et d'attendre un peu.
+
+
+*** Marginalia
+
+Description des commandes M-x, indispensable
+
+#+begin_src elisp
+(use-package marginalia
+  :after vertico
+  :init (marginalia-mode))
+#+end_src
+
+
+** QOL
+
+Gérer les fichiers de backups :
+
+#+begin_src elisp
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+#+end_src
+
+Simplifier la confirmation (yes/no)
+
+#+begin_src elisp
+(fset 'yes-or-no-p 'y-or-n-p)
+#+end_src
+
