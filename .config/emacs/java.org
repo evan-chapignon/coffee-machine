@@ -8,6 +8,8 @@ Un bloc de code pour l'utilisation de java dans emacs, pour être
 honnête, je recommande toujours l'utilisation d'intelliJ pour du java poussé
 
 #+begin_src elisp
+  (lsp-mode 1)
+
   (use-package lsp-java
     :after lsp
     :config
@@ -31,7 +33,7 @@ honnête, je recommande toujours l'utilisation d'intelliJ pour du java poussé
     :bind-keymap
     ("C-c p" . projectile-command-map))
 
-  
+
   (use-package treemacs
     :bind ("C-x t t" . treemacs))
 
