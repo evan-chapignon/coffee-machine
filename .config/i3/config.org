@@ -6,27 +6,42 @@
 Cette configuration est pensée pour rendre *i3* plus simple.
 
 ** Configuration de base
+
+Le premier bloc de lignes correspond au variables. remplacez les selon
+les logiciels utilisés (exemple : remplacer firefox par chrome si vous
+êtes masochistes)
+
 #+BEGIN_SRC conf
-set $mod Mod4
-font JetBrainsMonoRegular 20
-for_window [class="^.*"] border pixel 2
-gaps inner 10
-gaps outer 10
-hide_edge_borders smart
-smart_borders on
-smart_gaps on
+  set $mod Mod4
+  set $term alacritty
+  set $browser firefox
+  set $file dolphin
+  set $ide emacsclient -c
+  set $menu rofi
+  
+  font JetBrainsMonoRegular 20
+  for_window [class="^.*"] border pixel 2
+  gaps inner 10 # Changez selon les 
+  gaps outer 10 # espaces désirés
+  hide_edge_borders smart
+  smart_borders on
+  smart_gaps on
 #+END_SRC
 
 ** Lancement automatique (Autostart)
 #+BEGIN_SRC conf
-exec_always --no-startup-id feh --bg-scale /usr/share/backgrounds/gnome/blobs-l.svg
-exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id picom --fade-in-step=1 --fade-out-step=1 &
-exec --no-startup-id "~/.config/i3/scripts/launch.sh"
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id nm-applet
-exec_always --no-startup-id sh -c "sleep 0.3 && setxkbmap fr -option ctrl:nocaps"
-exec xinput set-prop "ELAN06A0:00 04F3:3231 Touchpad" "libinput Natural Scrolling Enabled" 1
+  exec_always --no-startup-id feh --bg-scale /chemin/vers/votre/fond/decran
+  exec --no-startup-id dex --autostart --environment i3
+  exec --no-startup-id picom --fade-in-step=1 --fade-out-step=1 &
+  exec --no-startup-id "~/.config/i3/scripts/display.sh"
+  exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+  exec --no-startup-id nm-applet
+  exec_always --no-startup-id sh -c "sleep 0.3 && setxkbmap fr -option
+  ctrl:nocaps" # Cette ligne remplace la touche caps lock par un autre CTRL
+  exec xinput set-prop "ELAN06A0:00 04F3:3231 Touchpad" "libinput
+  Natural Scrolling Enabled" 1
+  
+  # Note : Le touchpad est entièrement dépendant de votre ordinateur
 #+END_SRC
 
 ** Touchpad et affichage
@@ -47,15 +62,16 @@ bindsym XF86AudioMicMute exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SOUR
 
 ** Raccourcis généraux
 #+BEGIN_SRC conf
-floating_modifier $mod
-tiling_drag modifier titlebar
+  floating_modifier $mod
+  tiling_drag modifier titlebar
 
-bindsym $mod+q exec alacritty
-bindsym $mod+c kill
-bindsym $mod+space exec --no-startup-id rofi
-bindsym $mod+b exec firefox
-bindsym $mod+t exec emacsclient -c
-bindsym $mod+Shift+m exec flameshot gui
+  bindsym $mod+q exec $term
+  bindsym $mod+c kill
+  bindsym $mod+space exec --no-startup-id $menu
+  bindsym $mod+b exec $browser
+  bindsym $mod+t exec $ide
+  bindsym $mod+Shift+m exec flameshot gui # Outil de capture d'écran
+  bindsym $mod+e exec $file
 #+END_SRC
 
 ** Gestion des fenêtres
@@ -73,7 +89,7 @@ bindsym $mod+Shift+l move right
 bindsym $mod+m split h
 bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
-bindsym $mod+s layout stacking
+bindsym $mod+a layout stacking
 bindsym $mod+z layout tabbed
 bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
@@ -115,6 +131,9 @@ bindsym $mod+Shift+agrave move container to workspace number $ws10
 #+END_SRC
 
 ** Mode redimensionnement
+
+Permet de changer l'espace pris par les fenêtres.
+
 #+BEGIN_SRC conf
 mode "resize" {
     bindsym l resize shrink width 5 px or 5 ppt
