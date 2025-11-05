@@ -211,6 +211,21 @@ Recherche et commandes améliorées
 #+end_src
 
 
+*** LSP
+
+Language Server Protocol, intégration pour les fichiers de code en
+général
+
+#+begin_src elisp
+(use-package lsp-mode
+  :ensure t
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :hook ((prog-mode . lsp-deferred))
+  :commands (lsp lsp-deferred))
+#+end_src
+
+
 ** QOL
 
 Gérer les fichiers de backups :
