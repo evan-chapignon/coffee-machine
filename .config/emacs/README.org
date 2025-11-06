@@ -146,15 +146,7 @@ mettre une petite star sur mes projets ;))
 
 *** Thème
 
-Thème catppuccin, simple, pastel, beau et répandu.
-
-#+begin_src elisp
-  (use-package catppuccin-theme)
-
-  (load-theme 'catppuccin :no-confirm)
-  (setq catppuccin-flavor 'latte) ;; Remplacer latte par mocha pour le thème sombre
-  (catppuccin-reload)
-#+end_src
+Le thème est à retrouver dans [[./theme.org]]
 
 
 *** Avy

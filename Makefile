@@ -12,7 +12,7 @@ help:
 $(THEMES): dependances
 	@echo "Application du thème Catppuccin-$@"
 	sed -i "1s|.*|include-file = $$HOME/.config/polybar/themes/$@.ini|" "$$HOME/.config/polybar/config.ini"
-	sed -i "155s|.*|(setq catppuccin-flavor '$@)|" "$$HOME/.config/emacs/README.org"
+	sed -i "11s|.*|(setq catppuccin-flavor '$@)|" "./.config/emacs/README.org"
 	@echo "✅ Thème '$@' appliqué avec succès !"
 	@$(MAKE) move
 	@$(MAKE) clear
