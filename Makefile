@@ -16,6 +16,13 @@ $(THEMES): dependances
 	@echo "✅ Thème '$@' appliqué avec succès !"
 	@$(MAKE) move
 	@$(MAKE) clear
+	@echo -e "\e[31m⚠️  ATTENTION ⚠️\e[0m"
+	@echo -e "\e[31mVous êtes sur le point de quitter votre session actuelle pour lancer i3.\e[0m"
+	@echo -e "\e[31mSi vous étiez sur GNOME, MATE ou tout autre environnement de bureau, tous vos paramètres et fenêtres actuels seront fermés.\e[0m"
+	@echo -e "\e[31mAssurez-vous d'avoir sauvegardé tout votre travail et d'être prêt à basculer sur i3.\e[0m"
+	@echo -e "\e[31mAppuyez sur [Entrée] pour vous déconnecter, ou Ctrl+C pour annuler.\e[0m" && read
+	@echo "Déconnexion..."
+	@logout
 
 
 dependances:
