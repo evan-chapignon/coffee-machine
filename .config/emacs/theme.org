@@ -1,0 +1,13 @@
+#+AUTHOR: Evan DELEPINE
+#+DATE: <2025-11-06 Thu>
+#+property: header-args :results none
+
+Thème catppuccin, simple, pastel, beau et répandu.
+
+#+begin_src elisp
+  (use-package catppuccin-theme)
+
+  (load-theme 'catppuccin :no-confirm)
+  (setq catppuccin-flavor 'latte)
+  (catppuccin-reload)
+#+end_src
