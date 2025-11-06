@@ -35,7 +35,7 @@ Dans la même veine, j'active un mode qui permet de remplacer la
 sélection par le caractère inséré dans la sélection
 
 #+begin_src elisp
-(delete-selection mode 1)
+(delete-selection-mode 1)
 #+end_src
 
 Dans un but d'esthétisme, la barre de défilement sera otée.
