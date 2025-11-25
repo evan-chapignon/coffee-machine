@@ -13,14 +13,17 @@ les logiciels utilisés (exemple : remplacer firefox par chrome si vous
   set $mod Mod4
   set $term alacritty
   set $browser firefox
-  set $file dolphin
   set $ide emacsclient -c -s emacs
+  # ^ Changer pour code pour Visual Studio Code
   set $menu rofi
-  
+
   font JetBrainsMonoRegular 20
   for_window [class="^.*"] border pixel 2
-  gaps inner 10 # Changez selon les 
-  gaps outer 10 # espaces désirés
+
+  gaps inner 10
+  gaps outer 10
+  # Changez selon les espaces désirés
+
   hide_edge_borders smart
   smart_borders on
   smart_gaps on
@@ -35,10 +38,12 @@ les logiciels utilisés (exemple : remplacer firefox par chrome si vous
   exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
   exec --no-startup-id nm-applet
   exec_always --no-startup-id sh -c "sleep 0.3 && setxkbmap fr -option
-  ctrl:nocaps" # Cette ligne remplace la touche caps lock par un autre CTRL
+  ctrl:nocaps"
+   # ^ Cette ligne remplace la touche caps lock par un autre CTRL
+
   exec xinput set-prop "ELAN06A0:00 04F3:3231 Touchpad" "libinput
   Natural Scrolling Enabled" 1
-  
+
   # Note : Le touchpad est entièrement dépendant de votre ordinateur
 #+END_SRC
 
@@ -69,7 +74,6 @@ bindsym XF86AudioMicMute exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SOUR
   bindsym $mod+b exec $browser
   bindsym $mod+t exec $ide
   bindsym $mod+Shift+m exec flameshot gui # Outil de capture d'écran
-  bindsym $mod+e exec $file
 #+END_SRC
 
 ** Gestion des fenêtres

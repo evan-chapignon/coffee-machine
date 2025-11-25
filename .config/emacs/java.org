@@ -8,33 +8,39 @@ Un bloc de code pour l'utilisation de java dans emacs, pour être
 honnête, je recommande toujours l'utilisation d'intelliJ pour du java poussé
 
 #+begin_src elisp
-  (lsp-mode 1)
+  (use-package lsp-mode
+    :commands lsp
+    :init
+    (add-hook 'java-mode-hook #'lsp-deferred))
+
 
   (use-package lsp-java
-    :after lsp
+    :after lsp-mode
     :config
-    (add-hook 'java-mode-hook #'lsp))
+  )
+
 
   (use-package corfu
-    :init
-    (global-corfu-mode))
+    :init (global-corfu-mode))
 
   (use-package flycheck
     :init (global-flycheck-mode))
-
+  
   (use-package dap-mode
     :after lsp-mode
     :config
-    (dap-auto-configure-mode)
-    (require 'dap-java))
+    
+    (require 'dap-java)
+    
+    (add-hook 'lsp-after-initialize-hook #'dap-auto-configure-mode)
+    )
+
 
   (use-package projectile
     :init (projectile-mode +1)
     :bind-keymap
     ("C-c p" . projectile-command-map))
 
-
   (use-package treemacs
     :bind ("C-x t t" . treemacs))
-
 #+end_src

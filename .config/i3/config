@@ -2,32 +2,32 @@ set $mod Mod4
 set $term alacritty
 set $browser firefox
 set $ide emacsclient -c -s emacs
+# ^ Changer pour code pour Visual Studio Code
 set $menu rofi
 
-font pango:JetBrains Mono 20
+font JetBrainsMonoRegular 20
 for_window [class="^.*"] border pixel 2
 
-# Changez selon les 
 gaps inner 10
-
-# espaces désirés
 gaps outer 10
+# Changez selon les espaces désirés
 
 hide_edge_borders smart
+smart_borders on
 smart_gaps on
 
 exec_always --no-startup-id feh --bg-scale /chemin/vers/votre/fond/decran
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id picom --fade-in-step=1 --fade-out-step=1 &
-exec --no-startup-id "~/.config/i3/scripts/display.sh internal"
+exec --no-startup-id "~/.config/i3/scripts/display.sh"
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
-exec --no-startup-id polybar
+exec_always --no-startup-id sh -c "sleep 0.3 && setxkbmap fr -option
+ctrl:nocaps"
+ # ^ Cette ligne remplace la touche caps lock par un autre CTRL
 
- # Cette ligne remplace la touche caps lock par un autre CTRL
-exec_always --no-startup-id sh -c "sleep 0.3 && setxkbmap fr -option ctrl:nocaps"
-
-exec xinput set-prop "ELAN06A0:00 04F3:3231 Touchpad" "libinput Natural Scrolling Enabled" 1
+exec xinput set-prop "ELAN06A0:00 04F3:3231 Touchpad" "libinput
+Natural Scrolling Enabled" 1
 
 # Note : Le touchpad est entièrement dépendant de votre ordinateur
 
@@ -49,10 +49,7 @@ bindsym $mod+c kill
 bindsym $mod+space exec --no-startup-id $menu
 bindsym $mod+b exec $browser
 bindsym $mod+t exec $ide
-
-# Outil de capture d'écran
-bindsym $mod+Shift+m exec flameshot gui
-
+bindsym $mod+Shift+m exec flameshot gui # Outil de capture d'écran
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
