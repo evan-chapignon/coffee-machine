@@ -17,7 +17,7 @@ $(THEMES): dependances
 	@echo "Application du thème Catppuccin-$@"
 	sed -i "1s|.*|include-file = ./.config/polybar/themes/$@.ini|" "./.config/polybar/config.ini"
 	sed -i "11s|.*|(setq catppuccin-flavor '$@)|" "./.config/emacs/theme.org"
-	sed -i "34s|.*|exec_always --no-startup-id feh --bg-scale ~/.config/i3/fde/$@.png|" "./.config/i3/config"
+	sed -i "19s|.*|exec_always --no-startup-id feh --bg-scale ~/.config/i3/fde/$@.png|" "./.config/i3/config"
 	@mkdir -p ~/.config/alacritty
 	@echo 'general.import = ["~/.config/alacritty/catppuccin-$@.toml"]' > ~/.config/alacritty/alacritty.toml
 	wget -q -O ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-$@.toml || true
@@ -65,18 +65,18 @@ dependances:
 		case "$$ID" in \
 			debian|ubuntu) \
 				echo "Installation via apt..."; \
-				sudo apt update && sudo apt install -y emacs i3 polybar rofi wget unzip fonts-jetbrains-mono ;; \
+				sudo apt update && sudo apt install -y emacs i3 polybar rofi wget unzip feh fonts-jetbrains-mono ;; \
 			arch|manjaro) \
 				echo "Installation via pacman..."; \
-				sudo pacman -Syu --noconfirm emacs i3-wm polybar rofi wget unzip ttf-jetbrains-mono ;; \
+				sudo pacman -Syu --noconfirm emacs i3-wm polybar rofi wget feh unzip ttf-jetbrains-mono ;; \
 			fedora) \
 				echo "Installation via dnf..."; \
-				sudo dnf install -y emacs i3 polybar rofi wget unzip jetbrains-mono-fonts ;; \
+				sudo dnf install -y emacs i3 polybar rofi wget unzip feh jetbrains-mono-fonts ;; \
 			opensuse*) \
 				echo "Installation via zypper..."; \
-				sudo zypper install -y emacs i3 polybar rofi wget unzip jetbrains-mono-fonts ;; \
+				sudo zypper install -y emacs i3 polybar rofi wget unzip feh jetbrains-mono-fonts ;; \
 			*) \
-				echo "Distribution non reconnue ($$ID). Installe manuellement emacs, i3, polybar, rofi, wget, unzip, jetbrain-mono-fonts."; \
+				echo "Distribution non reconnue ($$ID). Installe manuellement emacs, i3, polybar, rofi, wget, unzip, feh, jetbrain-mono-fonts."; \
 				exit 1 ;; \
 		esac; \
 	else \
