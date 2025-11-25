@@ -22,18 +22,16 @@ exec --no-startup-id picom --fade-in-step=1 --fade-out-step=1 &
 exec --no-startup-id "~/.config/i3/scripts/display.sh"
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
-exec_always --no-startup-id sh -c "sleep 0.3 && setxkbmap fr -option
-ctrl:nocaps"
+exec_always --no-startup-id sh -c "sleep 0.3 && setxkbmap fr -option ctrl:nocaps"
  # ^ Cette ligne remplace la touche caps lock par un autre CTRL
 
-exec xinput set-prop "ELAN06A0:00 04F3:3231 Touchpad" "libinput
-Natural Scrolling Enabled" 1
+exec xinput set-prop "ELAN06A0:00 04F3:3231 Touchpad" "libinput Natural Scrolling Enabled" 1
 
 # Note : Le touchpad est entièrement dépendant de votre ordinateur
 
 exec_always --no-startup-id feh --bg-scale ~/.config/i3/fde/latte.png
 bindsym $mod+F8 exec "./script/display.sh external"
-bindsym $mod+F9 exec "./script/display.sh dual"
+exec_always --no-startup-id feh --bg-scale ~/.config/i3/fde/latte.png
 
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+ && $refresh_i3status
