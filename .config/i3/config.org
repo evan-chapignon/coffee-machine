@@ -31,7 +31,7 @@ les logiciels utilisés (exemple : remplacer firefox par chrome si vous
 
 ** Lancement automatique (Autostart)
 #+BEGIN_SRC sh :tangle config
-  exec_always --no-startup-id feh --bg-scale /chemin/vers/votre/fond/decran
+  exec_always --no-startup-id feh --bg-scale ~/.config/i3/fde/clair.png
   exec --no-startup-id dex --autostart --environment i3
   exec --no-startup-id picom --fade-in-step=1 --fade-out-step=1 &
   exec --no-startup-id "~/.config/i3/scripts/display.sh"
