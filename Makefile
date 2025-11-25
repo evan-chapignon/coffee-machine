@@ -17,10 +17,10 @@ $(THEMES): dependances
 	@echo "Application du thème Catppuccin-$@"
 	sed -i "1s|.*|include-file = ./.config/polybar/themes/$@.ini|" "./.config/polybar/config.ini"
 	sed -i "11s|.*|(setq catppuccin-flavor '$@)|" "./.config/emacs/theme.org"
-        sed -i "34s|.*|exec_always --no-startup-id feh --bg-scale ~/.config/i3/fde/$@.png|" "./.config/i3/config"
+	sed -i "34s|.*|exec_always --no-startup-id feh --bg-scale ~/.config/i3/fde/$@.png|" "./.config/i3/config"
 	@mkdir -p ~/.config/alacritty
 	@echo 'general.import = ["~/.config/alacritty/catppuccin-$@.toml"]' >> ~/.config/alacritty/alacritty.toml
-        wget -P ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-latte.toml
+        -wget -P ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-latte.toml
 	@echo "✅ Thème '$@' appliqué avec succès !"
 	@$(MAKE) move
 	@$(MAKE) emacsserv

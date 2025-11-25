@@ -31,7 +31,7 @@ Natural Scrolling Enabled" 1
 
 # Note : Le touchpad est entièrement dépendant de votre ordinateur
 
-bindsym $mod+F7 exec "./script/display.sh internal"
+exec_always --no-startup-id feh --bg-scale ~/.config/i3/fde/latte.png
 bindsym $mod+F8 exec "./script/display.sh external"
 bindsym $mod+F9 exec "./script/display.sh dual"
 
