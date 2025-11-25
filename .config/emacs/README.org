@@ -8,7 +8,7 @@ DISCLAIMER : Nous partons du principe que vous avez fait le [[elisp:(help-with-t
 d'emacs]] (C-h t (Ce qui signifie CTRL+H, puis t)) 
 
 ** Les modes
-
+(setq catppuccin-flavor ')
 Un mode est une fonction permettant de modifier le fonctionnement de
 emacs de plusieurs manières, allant de l'affichage de l'interface
 utilisateur aux raccourcis clavier.

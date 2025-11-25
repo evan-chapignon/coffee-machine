@@ -1,28 +1,56 @@
 THEMES := latte frape macchiato mocha
 
+SERVICE_NAME ?= emacs
+SYSTEMD_USER_DIR := $(HOME)/.config/systemd/user
+SERVICE_FILE := $(SYSTEMD_USER_DIR)/$(SERVICE_NAME).service
+
 
 help:
 	@echo "Utilisation :"
 	@echo "		make latte		-> Applique le thème Catppuccin Latte"
 	@echo "		make frape		-> Applique le thème Catppuccin Frape"
-	@echo "		make macchiato	-> Applique le thème Catppuccin Macchiato"
+	@echo "		make macchiato	        -> Applique le thème Catppuccin Macchiato"
 	@echo "		make mocha		-> Applique le thème Catppuccin Mocha"
 
 
 $(THEMES): dependances
 	@echo "Application du thème Catppuccin-$@"
-	sed -i "1s|.*|include-file = $$HOME/.config/polybar/themes/$@.ini|" "$$HOME/.config/polybar/config.ini"
-	sed -i "11s|.*|(setq catppuccin-flavor '$@)|" "./.config/emacs/README.org"
+	sed -i "1s|.*|include-file = ./.config/polybar/themes/$@.ini|" "./.config/polybar/config.ini"
+	sed -i "11s|.*|(setq catppuccin-flavor '$@)|" "./.config/emacs/theme.org"
 	@echo "✅ Thème '$@' appliqué avec succès !"
 	@$(MAKE) move
+	@$(MAKE) emacsserv
 	@$(MAKE) clear
-	@echo -e "\e[31m⚠️  ATTENTION ⚠️\e[0m"
-	@echo -e "\e[31mVous êtes sur le point de quitter votre session actuelle pour lancer i3.\e[0m"
-	@echo -e "\e[31mSi vous étiez sur GNOME, MATE ou tout autre environnement de bureau, tous vos paramètres et fenêtres actuels seront fermés.\e[0m"
-	@echo -e "\e[31mAssurez-vous d'avoir sauvegardé tout votre travail et d'être prêt à basculer sur i3.\e[0m"
-	@echo -e "\e[31mAppuyez sur [Entrée] pour vous déconnecter, ou Ctrl+C pour annuler.\e[0m" && read
-	@echo "Déconnexion..."
-	@logout
+	@echo -e "\e[33mNous vous invitons à vous déconnecter pour lancer i3.\e[0m"
+
+emacsserv:
+	@echo "==> Création du dossier systemd user si nécessaire..."
+	@mkdir -p $(SYSTEMD_USER_DIR)
+
+	@echo "==> Suppression de l'ancien service si existant..."
+	@if systemctl --user is-active --quiet $(SERVICE_NAME).service; then \
+		systemctl --user stop $(SERVICE_NAME).service; \
+	fi
+	@if systemctl --user list-unit-files | grep -q "^$(SERVICE_NAME).service"; then \
+		systemctl --user disable $(SERVICE_NAME).service; \
+		rm -f $(SERVICE_FILE); \
+	fi
+
+	@echo "Copie du nouveau fichier de service systemd..."
+	@cp ./emacs.service $(SERVICE_FILE)
+
+	@echo "Rechargement des unités systemd user..."
+	@systemctl --user daemon-reload
+
+	@echo "==> Activation et démarrage du service Emacs..."
+	@systemctl --user enable $(SERVICE_NAME).service
+	@systemctl --user start $(SERVICE_NAME).service
+
+	@echo "Création du dossier serveur Emacs si nécessaire..."
+	@mkdir -p $(HOME)/.config/emacs/server
+
+	@echo "Vérification du statut du serveur Emacs..."
+	@systemctl --user status $(SERVICE_NAME).service --no-pager
 
 
 dependances:
@@ -33,18 +61,18 @@ dependances:
 		case "$$ID" in \
 			debian|ubuntu) \
 				echo "Installation via apt..."; \
-				sudo apt update && sudo apt install -y emacs i3 polybar rofi wget unzip ;; \
+				sudo apt update && sudo apt install -y emacs i3 polybar rofi wget unzip fonts-jetbrains-mono ;; \
 			arch|manjaro) \
 				echo "Installation via pacman..."; \
-				sudo pacman -Syu --noconfirm emacs i3-wm polybar rofi wget unzip ;; \
+				sudo pacman -Syu --noconfirm emacs i3-wm polybar rofi wget unzip ttf-jetbrains-mono ;; \
 			fedora) \
 				echo "Installation via dnf..."; \
-				sudo dnf install -y emacs i3 polybar rofi wget unzip ;; \
+				sudo dnf install -y emacs i3 polybar rofi wget unzip jetbrains-mono-fonts ;; \
 			opensuse*) \
 				echo "Installation via zypper..."; \
-				sudo zypper install -y emacs i3 polybar rofi wget unzip ;; \
+				sudo zypper install -y emacs i3 polybar rofi wget unzip jetbrains-mono-fonts ;; \
 			*) \
-				echo "Distribution non reconnue ($$ID). Installe manuellement emacs, i3, polybar, rofi, wget, unzip."; \
+				echo "Distribution non reconnue ($$ID). Installe manuellement emacs, i3, polybar, rofi, wget, unzip, jetbrain-mono-fonts."; \
 				exit 1 ;; \
 		esac; \
 	else \
@@ -62,7 +90,7 @@ dependances:
 move:
 	@echo "Déplacement des fichiers de ./config vers $$HOME/.config..."
 	mkdir -p $$HOME/.config
-	cp -r ./config/* $$HOME/.config/
+	cp -r ./.config/* $$HOME/.config/
 	@echo "Tous les fichiers ont été copiés dans $$HOME/.config"
 
 

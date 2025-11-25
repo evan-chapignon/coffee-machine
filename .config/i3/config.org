@@ -14,7 +14,7 @@ les logiciels utilisés (exemple : remplacer firefox par chrome si vous
   set $term alacritty
   set $browser firefox
   set $file dolphin
-  set $ide emacsclient -c
+  set $ide emacsclient -c -s emacs
   set $menu rofi
   
   font JetBrainsMonoRegular 20
