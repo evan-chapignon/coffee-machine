@@ -70,7 +70,7 @@ bindsym XF86AudioMicMute exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SOUR
 
   bindsym $mod+q exec $term
   bindsym $mod+c kill
-  bindsym $mod+space exec --no-startup-id $menu
+  bindsym $mod+space exec --no-startup-id $menu -show drun
   bindsym $mod+b exec $browser
   bindsym $mod+t exec $ide
   bindsym $mod+Shift+m exec flameshot gui # Outil de capture d'écran

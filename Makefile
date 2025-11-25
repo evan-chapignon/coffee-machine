@@ -37,7 +37,7 @@ emacsserv:
 	fi
 
 	@echo "Copie du nouveau fichier de service systemd..."
-	@cp ./emacs.service $(SERVICE_FILE)
+	@cp ./systemd/user/emacs.service $(SERVICE_FILE)
 
 	@echo "Rechargement des unités systemd user..."
 	@systemctl --user daemon-reload
