@@ -1,4 +1,5 @@
 #+PROPERTY: header-args :tangle ~/.config/i3/config
+#+PROPERTY: header-args :results silent :tangle yes
 
 * I3 pour les nuls
 
