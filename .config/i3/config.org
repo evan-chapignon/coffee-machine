@@ -1,6 +1,3 @@
-#+PROPERTY: header-args :tangle ~/.config/i3/config
-#+PROPERTY: header-args :results silent :tangle yes
-
 * I3 pour les nuls
 
 ** Introduction
@@ -12,48 +9,53 @@ Le premier bloc de lignes correspond au variables. remplacez les selon
 les logiciels utilisés (exemple : remplacer firefox par chrome si vous
 êtes masochistes)
 
-#+BEGIN_SRC conf
+#+BEGIN_SRC sh :tangle config
   set $mod Mod4
   set $term alacritty
   set $browser firefox
-  set $file dolphin
-  set $ide emacsclient -c
+  set $ide emacsclient -c -s emacs
+  # ^ Changer pour code pour Visual Studio Code
   set $menu rofi
-  
+
   font JetBrainsMonoRegular 20
   for_window [class="^.*"] border pixel 2
-  gaps inner 10 # Changez selon les 
-  gaps outer 10 # espaces désirés
+
+  gaps inner 10
+  gaps outer 10
+  # Changez selon les espaces désirés
+
   hide_edge_borders smart
   smart_borders on
   smart_gaps on
 #+END_SRC
 
 ** Lancement automatique (Autostart)
-#+BEGIN_SRC conf
-  exec_always --no-startup-id feh --bg-scale /chemin/vers/votre/fond/decran
+#+BEGIN_SRC sh :tangle config
+  exec_always --no-startup-id feh --bg-scale ~/.config/i3/fde/clair.png
   exec --no-startup-id dex --autostart --environment i3
   exec --no-startup-id picom --fade-in-step=1 --fade-out-step=1 &
   exec --no-startup-id "~/.config/i3/scripts/display.sh"
   exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
   exec --no-startup-id nm-applet
   exec_always --no-startup-id sh -c "sleep 0.3 && setxkbmap fr -option
-  ctrl:nocaps" # Cette ligne remplace la touche caps lock par un autre CTRL
+  ctrl:nocaps"
+   # ^ Cette ligne remplace la touche caps lock par un autre CTRL
+
   exec xinput set-prop "ELAN06A0:00 04F3:3231 Touchpad" "libinput
   Natural Scrolling Enabled" 1
-  
+
   # Note : Le touchpad est entièrement dépendant de votre ordinateur
 #+END_SRC
 
 ** Touchpad et affichage
-#+BEGIN_SRC conf
+#+BEGIN_SRC sh :tangle config
 bindsym $mod+F7 exec "./script/display.sh internal"
 bindsym $mod+F8 exec "./script/display.sh external"
 bindsym $mod+F9 exec "./script/display.sh dual"
 #+END_SRC
 
 ** Gestion du son
-#+BEGIN_SRC conf
+#+BEGIN_SRC sh :tangle config
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+ && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%- && $refresh_i3status
@@ -62,21 +64,20 @@ bindsym XF86AudioMicMute exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SOUR
 #+END_SRC
 
 ** Raccourcis généraux
-#+BEGIN_SRC conf
+#+BEGIN_SRC sh :tangle config
   floating_modifier $mod
   tiling_drag modifier titlebar
 
   bindsym $mod+q exec $term
   bindsym $mod+c kill
-  bindsym $mod+space exec --no-startup-id $menu
+  bindsym $mod+space exec --no-startup-id $menu -show drun
   bindsym $mod+b exec $browser
   bindsym $mod+t exec $ide
   bindsym $mod+Shift+m exec flameshot gui # Outil de capture d'écran
-  bindsym $mod+e exec $file
 #+END_SRC
 
 ** Gestion des fenêtres
-#+BEGIN_SRC conf
+#+BEGIN_SRC sh :tangle config
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -97,7 +98,7 @@ bindsym $mod+Shift+space floating toggle
 #+END_SRC
 
 ** Espaces de travail (workspaces)
-#+BEGIN_SRC conf
+#+BEGIN_SRC sh :tangle config
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -135,7 +136,7 @@ bindsym $mod+Shift+agrave move container to workspace number $ws10
 
 Permet de changer l'espace pris par les fenêtres.
 
-#+BEGIN_SRC conf
+#+BEGIN_SRC sh :tangle config
 mode "resize" {
     bindsym l resize shrink width 5 px or 5 ppt
     bindsym k resize grow height 5 px or 5 ppt
@@ -153,34 +154,17 @@ bindsym $mod+Shift+r mode "resize"
 #+END_SRC
 
 ** Raccourcis système
-#+BEGIN_SRC conf
+#+BEGIN_SRC sh :tangle config
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec i3 exit
 #+END_SRC
 
 ** Thème et couleurs
-#+BEGIN_SRC conf
-set $base00 #101218
-set $base01 #1f222d
-set $base02 #252936
-set $base03 #5e81ac  
-set $base04 #C0C5CE
-set $base05 #d1d4e0
-set $base06 #C9CCDB
-set $base07 #ffffff
-set $base08 #ee829f
-set $base09 #f99170
-set $base0A #ffefcc
-set $base0B #a5ffe1
-set $base0C #97e0ff
-set $base0D #97bbf7
-set $base0E #c0b7f9
-set $base0F #fcc09e
-
-client.focused          #ebdbb2 #ebdbb2 #282828 #282828
-client.unfocused        #1d2021 #1d2021 #1d2021 #1d2021
-client.focused_inactive #282828 #282828 #888888 #282828
-client.placeholder      #282828 #282828 #888888 #828282
-client.urgent           #900000 #900000 #ffffff #900000
-client.background       #242424
+#+BEGIN_SRC sh :tangle config
+  client.focused          #ccd0da #4c4f69 #ccd0da #4c4f69
+  client.unfocused        #4c4f69 #ccd0da #4c4f69 #ccd0da
+  # client.focused_inactive #282828 #282828 #888888 #282828
+  # client.placeholder      #282828 #282828 #888888 #828282
+  # client.urgent           #900000 #900000 #ffffff #900000
+  # client.background       #242424
 #+END_SRC

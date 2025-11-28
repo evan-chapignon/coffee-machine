@@ -8,6 +8,6 @@ Thème catppuccin, simple, pastel, beau et répandu.
   (use-package catppuccin-theme)
 
   (load-theme 'catppuccin :no-confirm)
-  (setq catppuccin-flavor 'latte)
+(setq catppuccin-flavor 'latte)
   (catppuccin-reload)
 #+end_src

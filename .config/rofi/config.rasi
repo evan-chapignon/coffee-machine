@@ -1,26 +1,26 @@
-  *{
+*{
       font: "Iosevka Nerd Font 10";
 
       /* Couleurs principales */
-      foreground: #ebdbb2;           ;; Couleur du texte
-      background: #282828;           ;; Couleur de fond générale
+      foreground: #ebdbb2;           // Couleur du texte
+      background: #282828;           // Couleur de fond générale
 
-      active-background: #282828;    ;; Fond d'un élément actif
-      urgent-background: #cc241d;    ;; Fond d'un élément urgent (attention, typo ici)
+      active-background: #282828;    // Fond d'un élément actif
+      urgent-background: #cc241d;    // Fond d'un élément urgent (attention, typo ici)
 
-      selected-background: #ebdbb2;  ;; Fond d'un élément sélectionné
+      selected-background: #ebdbb2;  // Fond d'un élément sélectionné
       selected-urgent-background: #ebdbb2;
-      selected-active-background: #ebdbb2; ;; Typo ici aussi
+      selected-active-background: #ebdbb2; // Typo ici aussi
 
-      bordercolor: #ebdbb2;          ;; Couleur des bordures
-      separatorcolor: #ebdbb2;       ;; Couleur des séparateurs
+      bordercolor: #ebdbb2;          // Couleur des bordures
+      separatorcolor: #ebdbb2;       // Couleur des séparateurs
   }
 
 #window {
-    background-color: @background; ;; Fond principal de la fenêtre
-    border: 2;                     ;; Épaisseur de la bordure
-    border-color: @bordercolor;    ;; Couleur de la bordure
-    padding: 10;                   ;; Marge interne
+    background-color: @background; // Fond principal de la fenêtre
+    border: 2;                     // Épaisseur de la bordure
+    border-color: @bordercolor;    // Couleur de la bordure
+    padding: 10;                   // Marge interne
 }
 
 #mainbox {
@@ -39,10 +39,10 @@
 
 #listview {
     fixed-height: 0;
-    lines: 6;          ;; nombre de lignes visibles
+    lines: 6;          // nombre de lignes visibles
     border: 0px;
     spacing: 0px;
-    scrollbar: false;  ;; pas de barre de défilement
+    scrollbar: false;  // pas de barre de défilement
     padding: 0px;
 }
 

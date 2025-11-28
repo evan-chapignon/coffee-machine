@@ -1,0 +1,14 @@
+set $mod Mod4
+set $term alacritty
+set $browser firefox
+set $file dolphin
+set $ide emacsclient -c
+set $menu rofi
+
+font JetBrainsMonoRegular 20
+for_window [class="^.*"] border pixel 2
+gaps inner 10 # Changez selon les 
+gaps outer 10 # espaces désirés
+hide_edge_borders smart
+smart_borders on
+smart_gaps on
